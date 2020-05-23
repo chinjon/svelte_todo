@@ -1,10 +1,6 @@
 <script>
-	const todos = [
-    {task: "get water", complete: false},
-    {task: "get water", complete: false},
-    {task: "get water", complete: false},
-    {task: "get water", complete: false}
-  ]
+  import {get} from 'svelte/store';
+  import {todos} from './todos.js'
 </script>
 
 <style>
@@ -15,9 +11,15 @@
 </style>
 
 <div>
-  {#each todos as todo, i}
+  {#each get(todos) as todo, i}
     <div class="todo-wrapper">
-      <input class="todo-item" type="checkbox" id={`todo-${i}`} value={todo.task}>
+      <input 
+        class="todo-item" 
+        type="checkbox" 
+        id={`todo-${todo.id}`} 
+        value={todo.task} 
+        bind:checked={todo.complete}
+      />
       <label class="todo-label" for={`todo-${i}`}>{todo.task}</label>
     </div>
   {/each}
