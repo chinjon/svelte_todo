@@ -1,6 +1,7 @@
 <script>
 	import TodoContainer from '../components/TodoContainer.svelte';
-	</script>
+	import TodoCreate from '../components/TodoCreate';
+</script>
 <style>
 	h1, figure {
 		text-align: center;
@@ -41,5 +42,7 @@
 	<img alt='Success Kid' src='successkid.jpg'>
 	<figcaption>Have fun with Sapper!</figcaption>
 </figure>
-
-<TodoContainer />
+<div>
+	<TodoContainer />
+	<TodoCreate />
+</div>
