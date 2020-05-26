@@ -7,13 +7,20 @@
   let task = "";
 
   const addTodo = () => {
-    todoList = [
-      ...todoList,
-      { id: createRandomNumber(1000), complete: false, task}
-    ];
+    if (task.length <= 0) {
+      console.log("Task must have a name")
+    } else {
+      todoList = [
+        ...todoList,
+        { id: createRandomNumber(1000), complete: false, task}
+      ];
+      
+      todos.update(existing => {
+        console.log('updating');
+        return todoList;
+      });
+    }
 
-    todos.update(existing => todoList)
-    console.log(get(todos))
   }
 </script>
 
