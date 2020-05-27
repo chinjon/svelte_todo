@@ -1,6 +1,9 @@
-const getLocalStorage = () => {
-  console.log(window.localStorage);
-  return localStorage;
+const getLocalStorage = (key) => {
+  try {
+    return localStorage.getItem(key);
+  } catch(e) {
+    console.log(e);
+  }
 }
 
 const setLocalStorage = () => {
