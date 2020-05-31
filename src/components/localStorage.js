@@ -6,9 +6,9 @@ const getLocalStorage = (key) => {
   }
 }
 
-const setLocalStorage = (key) => {
+const setLocalStorage = (key, value) => {
   try {
-    localStorage.setItem(key); 
+    localStorage.setItem(key, value); 
   } catch(e) {
     console.log(e)
   }
