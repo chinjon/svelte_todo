@@ -7,6 +7,7 @@
 
   if (typeof window !== "undefined") {
     todoListData = getLocalStorage("todolist");
+    console.log(todoListData)
     if (todoListData.length === 0) {
       setLocalStorage("todolist");
     } else {
