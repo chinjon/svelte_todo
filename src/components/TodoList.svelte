@@ -1,6 +1,6 @@
 <script>
-  import { todos } from "./todos.js";
   export let todoListData;
+  
 </script>
 
 <style>

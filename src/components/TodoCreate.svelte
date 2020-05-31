@@ -1,24 +1,22 @@
 <script>
-  import { todos } from './todos.js'
-  import { get } from 'svelte/store';
+  import { setLocalStorage } from "./localStorage.js";
   import { createRandomNumber } from './createRandomNumber.js';
 
-  let todoList = get(todos);
+  export let todoListData;
   let task = "";
 
   const addTodo = () => {
     if (task.length <= 0) {
       console.log("Task must have a name")
     } else {
-      todoList = [
-        ...todoList,
+      todoListData = [
+        ...todoListData,
         { id: createRandomNumber(1000), complete: false, task}
       ];
-      
-      todos.update(existing => {
-        console.log('updating');
-        return todoList;
-      });
+
+      console.log(todoListData)
+
+      setLocalStorage("todoListData", JSON.stringify(todoListData))
     }
 
   }
