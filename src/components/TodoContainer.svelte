@@ -8,7 +8,7 @@
   if (typeof window !== "undefined") {
     todoListData = getLocalStorage("todolist");
     if (!todoListData) {
-      setLocalStorage("todolist");
+      setLocalStorage("todolist", JSON.stringify([]));
     } else {
       todoListData = [{id: 345, task: "get water", complete: true}]
     }
