@@ -2,19 +2,22 @@
   import TodoList from "./TodoList.svelte";
   import TodoCreate from "./TodoCreate.svelte";
 
-  import { getLocalStorage } from "./localStorage.js";
+  import { getLocalStorage, setLocalStorage } from "./localStorage.js";
+  let todoListData;
 
   if (typeof window !== "undefined") {
-    localStorage.setItem(
-      "todolist",
-      JSON.stringify([{ task: "get water", id: 1, complete: false }])
-    );
+    todoListData = getLocalStorage("todolist");
+    if (todoListData.length === 0) {
+      setLocalStorage("todolist");
+    } else {
+      todoListData = [{id: 345, task: "get water", complete: true}]
+    }
   } else {
     console.log("we are running on the server");
   }
 </script>
 
 <div>
-  <TodoList />
+  <TodoList {todoListData} />
   <TodoCreate />
 </div>
