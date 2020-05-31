@@ -7,8 +7,7 @@
 
   if (typeof window !== "undefined") {
     todoListData = getLocalStorage("todolist");
-    console.log(todoListData)
-    if (todoListData.length === 0) {
+    if (!todoListData) {
       setLocalStorage("todolist");
     } else {
       todoListData = [{id: 345, task: "get water", complete: true}]
