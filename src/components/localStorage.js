@@ -6,8 +6,12 @@ const getLocalStorage = (key) => {
   }
 }
 
-const setLocalStorage = () => {
-  
+const setLocalStorage = (key) => {
+  try {
+    localStorage.setItem(key); 
+  } catch(e) {
+    console.log(e)
+  }
 }
 
 const updateLocalStorage = () => {
@@ -18,4 +22,4 @@ const clearLocalStorage = () => {
   
 }
 
-export { getLocalStorage };
+export { getLocalStorage, setLocalStorage };
