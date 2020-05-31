@@ -1,7 +1,6 @@
 <script>
   import { todos } from "./todos.js";
   export let todoListData;
-  console.log(todoListData);
 </script>
 
 <style>
