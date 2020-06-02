@@ -1,6 +1,6 @@
 <script>
   export let todoListData;
-  
+  console.log(todoListData)
 </script>
 
 <style>
@@ -12,16 +12,22 @@
 
 <div>
   {#if todoListData !== undefined}
-    {#each todoListData as todo, i}
-      <div class="todo-wrapper">
-        <input
-          class="todo-item"
-          type="checkbox"
-          id={`todo-${todo.id}`}
-          value={todo.task}
-          bind:checked={todo.complete} />
-        <label class="todo-label" for={`todo-${i}`}>{todo.task}</label>
+    {#if todoListData}
+      {#each todoListData as todo, i}
+        <div class="todo-wrapper">
+          <input
+            class="todo-item"
+            type="checkbox"
+            id={`todo-${todo.id}`}
+            value={todo.task}
+            bind:checked={todo.complete} />
+          <label class="todo-label" for={`todo-${todo.id}`}>{todo.task}</label>
+        </div>
+      {/each}
+    {:else}
+      <div>
+        <p>Add some todos</p>
       </div>
-    {/each}
+    {/if}
   {/if}
 </div>
