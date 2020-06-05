@@ -14,7 +14,7 @@
 <div>
   {#if todoList !== undefined}
     {#if todoList}
-      {#each todoList as todo, i}
+      {#each get(todoListData) as todo, i}
         <div class="todo-wrapper">
           <input
             class="todo-item"
