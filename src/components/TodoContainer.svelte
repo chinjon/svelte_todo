@@ -1,7 +1,5 @@
 <script>
   import TodoList from "./TodoList.svelte";
-  import { writable, get } from "svelte/store";
-  import { todoListData } from "./todoData.js";
   import {createRandomNumber} from './createRandomNumber.js';
 
   let tasks = [];
