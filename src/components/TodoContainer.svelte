@@ -57,7 +57,7 @@
   <button id="clear-todos" on:click={clearLocalStorage}>Clear Todos</button>
   <TodoList todos={tasks} />
   <form on:submit|preventDefault={addTask}>
-    <label for="new-todo">Add a todo:</label>
+    <label for="new-todo">Add a task item:</label>
     <input type="text" id="new-todo" bind:value={task} />
     <button type="submit">Add</button>
   </form>
