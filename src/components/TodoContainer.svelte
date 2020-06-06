@@ -13,7 +13,7 @@
   };
 
   try {
-    task = getLocalStorage() || [];
+    tasks = getLocalStorage() || [];
   } catch (err) {
     tasks = [];
   }
@@ -33,6 +33,8 @@
         task,
         complete: false
       });
+
+      console.log(tasks)
 
       task = "";
     } else {
