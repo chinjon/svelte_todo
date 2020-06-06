@@ -1,27 +1,28 @@
 <script>
-  import { writable, get } from 'svelte/store'
+  import { writable, get } from "svelte/store";
   import { setLocalStorage } from "./localStorage.js";
-  import { createRandomNumber } from './createRandomNumber.js';
-  import { todoListData } from './todoData.js'
+  import { createRandomNumber } from "./createRandomNumber.js";
+  import { todoListData } from "./todoData.js";
 
   let task = "";
   let list = get(todoListData);
 
   const addTodo = () => {
     if (task.length <= 0) {
-      console.log("Task must have a name")
+      console.log("Task must have a name");
     } else {
-      list = [
-        ...list,
-        { id: createRandomNumber(1000), complete: false, task}
-      ];
+      if (list) {
+        list = [
+          ...list,
+          { id: createRandomNumber(1000), complete: false, task }
+        ];
 
-      console.log(list)
+        console.log(list);
 
-      setLocalStorage("todoListData", JSON.stringify(list))
+        setLocalStorage("todoListData", JSON.stringify(list));
+      }
     }
-
-  }
+  };
 </script>
 
 <form on:submit|preventDefault={addTodo}>
