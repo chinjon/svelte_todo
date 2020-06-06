@@ -1,6 +1,9 @@
 <script>
   import TodoList from "./TodoList.svelte";
   import {createRandomNumber} from './createRandomNumber.js';
+  import { getNotificationsContext } from 'svelte-notifications';
+
+  const { addNotification } = getNotificationsContext();
 
   let tasks = [];
   let task = '';
@@ -15,11 +18,20 @@
 
   const addTask = () => {
     console.log(task)
-    tasks = tasks.concat({
-      id: createRandomNumber(1000),
-      task,
-      complete: false
-    })
+    if (task.length > 0) {
+      tasks = tasks.concat({
+        id: createRandomNumber(1000),
+        task,
+        complete: false
+      });
+    } else {
+      console.log('Must not be empty')
+      addNotification({
+        text: 'Task Must Not Be Empty',
+        type: 'warning',
+        position: 'top-center',
+      })
+    }
   }
 
   $: try {
