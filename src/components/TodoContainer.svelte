@@ -22,6 +22,8 @@
         task,
         complete: false
       });
+
+      task = '';
     } else {
       console.log('Must not be empty')
       notifier.warning('Must Not Be Empty!')
