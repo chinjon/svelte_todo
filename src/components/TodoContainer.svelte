@@ -6,7 +6,9 @@
   let task = '';
 
   try {
-    tasks = JSON.parse(localStorage.getItem('todoListData')) || [];
+    if (typeof window !== "undefined") {
+      tasks = JSON.parse(localStorage.getItem('todoListData')) || [];
+    }
   } catch(err){
     tasks = [];
   }
@@ -21,7 +23,9 @@
   }
 
   $: try {
-		localStorage.setItem('todoListData', JSON.stringify(tasks));
+    if (typeof window !== "undefined") {
+      localStorage.setItem('todoListData', JSON.stringify(tasks));
+    }
 	} catch (err) {
 		console.log(err)
 	}
