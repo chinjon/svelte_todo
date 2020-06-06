@@ -1,9 +1,7 @@
 <script>
   import TodoList from "./TodoList.svelte";
   import {createRandomNumber} from './createRandomNumber.js';
-  import { getNotificationsContext } from 'svelte-notifications';
-
-  const { addNotification } = getNotificationsContext();
+  import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
 
   let tasks = [];
   let task = '';
@@ -26,11 +24,7 @@
       });
     } else {
       console.log('Must not be empty')
-      addNotification({
-        text: 'Task Must Not Be Empty',
-        type: 'warning',
-        position: 'top-center',
-      })
+      notifier.warning('Must Not Be Empty!')
     }
   }
 
@@ -44,6 +38,7 @@
 </script>
 
 <div>
+<NotificationDisplay />
   <TodoList todos={tasks} />
   <form on:submit|preventDefault={addTask}>
     <label for="new-todo">Add a todo:</label>
