@@ -1,7 +1,5 @@
 <script>
-  import { writable, get } from 'svelte/store'
-  import { todoListData } from './todoData.js'
-  let todoList = get(todoListData)
+  export let todos;
 </script>
 
 <style>
@@ -12,9 +10,9 @@
 </style>
 
 <div>
-  {#if todoList !== undefined}
-    {#if todoList}
-      {#each get(todoListData) as todo, i}
+  {#if todos !== undefined}
+    {#if todos}
+      {#each todos as todo, i}
         <div class="todo-wrapper">
           <input
             class="todo-item"
