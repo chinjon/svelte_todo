@@ -8,6 +8,8 @@ if (typeof window !== "undefined") {
     console.log(JSON.parse(getLocalStorage("todoListData")))
     todoListData = writable(JSON.parse(getLocalStorage("todoListData")))
     console.log(todoListData)
+  } else {
+    todoListData = setLocalStorage("todoListData", JSON.stringify([]));
   }
 } else {
   console.log("we are running on the server");
