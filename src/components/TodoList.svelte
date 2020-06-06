@@ -1,18 +1,23 @@
 <script>
   export let todos;
 
+  console.log(todos);
   const testOnChange = () => {
-    console.log('test on change')
+    console.log("test on change");
     if (typeof window !== "undefined") {
-      localStorage.setItem('todoListData', JSON.stringify(todos));
+      localStorage.setItem("todoListData", JSON.stringify(todos));
     }
-  }
+  };
 </script>
 
 <style>
-  .todo-item,
+  .todo-input,
   .todo-label {
     display: inline;
+  }
+
+  .todo-complete {
+    text-decoration: line-through;
   }
 </style>
 
@@ -22,13 +27,17 @@
       {#each todos as todo, i}
         <div class="todo-wrapper">
           <input
-            class="todo-item"
+            class="todo-input"
             type="checkbox"
             id={`todo-${todo.id}`}
             value={todo.task}
             bind:checked={todo.complete}
             on:change={testOnChange} />
-          <label class="todo-label" for={`todo-${todo.id}`}>{todo.task}</label>
+          <label
+            class="todo-label {todo.complete ? 'todo-complete' : null}"
+            for={`todo-${todo.id}`}>
+            {todo.task}
+          </label>
         </div>
       {/each}
     {:else}
