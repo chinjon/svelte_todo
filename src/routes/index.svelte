@@ -1,5 +1,6 @@
 <script>
 	import TodoContainer from '../components/TodoContainer.svelte';
+	import Notifications from 'svelte-notifications';
 </script>
 
 <style>
@@ -9,7 +10,8 @@
 <svelte:head>
 	<title>Todos</title>
 </svelte:head>
-
-<div>
-	<TodoContainer />
-</div>
+<Notifications>
+	<div>
+		<TodoContainer />
+	</div>
+</Notifications>
