@@ -1,6 +1,6 @@
 <script>
   import TodoList from "./TodoList.svelte";
-  import { createRandomNumber } from "./createRandomNumber.js";
+  import { createUuid } from './utils/createUuid.js'
   import { NotificationDisplay, notifier } from "@beyonk/svelte-notifications";
 
   let tasks = [];
@@ -29,7 +29,7 @@
     console.log(task);
     if (task.length > 0) {
       tasks = tasks.concat({
-        id: createRandomNumber(1000),
+        id: createUuid(),
         task,
         complete: false
       });
