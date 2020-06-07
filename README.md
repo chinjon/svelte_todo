@@ -24,3 +24,4 @@ Original intent of this repo was to explore and test out `svelte`, but now is mo
   * Leverage Svelte animations
 * Charts
   * [Frappe Charts](https://github.com/frappe/charts)
+* Ensure follows WCAG 2.0 accessibility standards
