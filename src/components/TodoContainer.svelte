@@ -7,7 +7,7 @@
 
   let tasks = [];
   let task = "";
-  let hideComplete = true;
+  let hideComplete = false;
 
   const getLocalStorage = () => {
     if (typeof window !== "undefined") {
