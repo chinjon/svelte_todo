@@ -1,25 +1,38 @@
 <script>
-  import TodoList from './TodoList.svelte';
-  import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications';
-  
-  import todoData from './utils/todoData.js';
-  import { createUuid } from './utils/createUuid.js';
-  import time from './utils/time.js';
+  import TodoList from "./TodoList.svelte";
+  import { NotificationDisplay, notifier } from "@beyonk/svelte-notifications";
+
+  import todoData from "./utils/todoData.js";
+  import { createUuid } from "./utils/createUuid.js";
+  import time from "./utils/time.js";
+
+  const UNDEFINED = 'undefined';
+  const TODO_LIST_DATA = 'todoListData';
+  const TODO_LIST_PREFERENCES = 'todoListPreferences'
 
   let tasks = [];
-  let task = '';
-  let hideComplete = false;
+  let task = "";
+  const defaultPreferences = {
+    hideComplete: false
+  }
+  let preferences;
 
   try {
-    tasks = todoData.getLocalStorage('todoListData') || [];
+    tasks = todoData.getLocalStorage(TODO_LIST_DATA) || [];
+    preferences = todoData.getLocalStorage(TODO_LIST_PREFERENCES) || defaultPreferences;
   } catch (err) {
     tasks = [];
   }
 
+  const setPreferences = () => {
+    todoData.setLocalStorage(TODO_LIST_PREFERENCES, preferences);
+  }
+
+
   const clearLocalStorage = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== UNDEFINED) {
       localStorage.clear();
-      tasks = todoData.getLocalStorage('todoListData') || [];
+      tasks = todoData.getLocalStorage(TODO_LIST_DATA) || [];
     }
   };
 
@@ -33,17 +46,16 @@
         dataStart: time.createUnixStamp()
       });
 
-      console.log('task added');
       task = '';
     } else {
-      console.log('New task must not be empty');
-      notifier.warning('New task must Not Be Empty!');
+      console.log("New task must not be empty");
+      notifier.warning("New task must Not Be Empty!");
     }
   };
 
   $: try {
-    if (typeof window !== 'undefined') {
-      todoData.setLocalStorage('todoListData', tasks);
+    if (typeof window !== UNDEFINED) {
+      todoData.setLocalStorage(TODO_LIST_DATA, tasks);
     }
   } catch (err) {
     console.log(err);
@@ -52,9 +64,22 @@
 
 <div>
   <NotificationDisplay />
-  <button id="clear-todos" on:click={clearLocalStorage} aria-label="delete all tasks in list">Clear Todos</button>
-  <button id="toggle-complete" on:click={() => {hideComplete = hideComplete ? false : true;}} aria-label="hide tasks marked as complete">Toggle Complete</button>
-  <TodoList todos={tasks} hideComplete={hideComplete}/>
+  <button
+    id="clear-todos"
+    on:click={clearLocalStorage}
+    aria-label="delete all tasks in list">
+    Clear Todos
+  </button>
+  <button
+    id="toggle-complete"
+    on:click={() => {
+      preferences.hideComplete = preferences.hideComplete ? false : true;
+      setPreferences();
+    }}
+    aria-label="hide tasks marked as complete">
+    Toggle Complete
+  </button>
+  <TodoList todos={tasks} hideComplete={preferences.hideComplete} />
   <form on:submit|preventDefault={addTask}>
     <label for="new-task">Add a task item:</label>
     <input type="text" id="new-task" bind:value={task} />
