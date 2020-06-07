@@ -6,28 +6,28 @@
   import { createUuid } from "./utils/createUuid.js";
   import time from "./utils/time.js";
 
-  const UNDEFINED = 'undefined';
-  const TODO_LIST_DATA = 'todoListData';
-  const TODO_LIST_PREFERENCES = 'todoListPreferences'
+  const UNDEFINED = "undefined";
+  const TODO_LIST_DATA = "todoListData";
+  const TODO_LIST_PREFERENCES = "todoListPreferences";
 
   let tasks = [];
   let task = "";
   const defaultPreferences = {
-    hideComplete: false
-  }
+    hideComplete: false,
+  };
   let preferences;
 
   try {
     tasks = todoData.getLocalStorage(TODO_LIST_DATA) || [];
-    preferences = todoData.getLocalStorage(TODO_LIST_PREFERENCES) || defaultPreferences;
+    preferences =
+      todoData.getLocalStorage(TODO_LIST_PREFERENCES) || defaultPreferences;
   } catch (err) {
     tasks = [];
   }
 
   const setPreferences = () => {
     todoData.setLocalStorage(TODO_LIST_PREFERENCES, preferences);
-  }
-
+  };
 
   const clearLocalStorage = () => {
     if (typeof window !== UNDEFINED) {
@@ -43,10 +43,10 @@
         id: createUuid(),
         task,
         complete: false,
-        dataStart: time.createUnixStamp()
+        dataStart: time.createUnixStamp(),
       });
 
-      task = '';
+      task = "";
     } else {
       console.log("New task must not be empty");
       notifier.warning("New task must Not Be Empty!");
