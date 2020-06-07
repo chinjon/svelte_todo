@@ -1,11 +1,11 @@
 <script>
+  import todoData from "./utils/todoData.js";
   export let todos;
   export let hideComplete;
   
   const onChangeChecked = () => {
-    console.log("test on change");
     if (typeof window !== "undefined") {
-      localStorage.setItem("todoListData", JSON.stringify(todos));
+      todoData.setLocalStorage("todoListData", todos);
     }
   };
 </script>
