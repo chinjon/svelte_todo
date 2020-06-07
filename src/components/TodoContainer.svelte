@@ -1,7 +1,9 @@
 <script>
   import TodoList from "./TodoList.svelte";
-  import { createUuid } from './utils/createUuid.js'
   import { NotificationDisplay, notifier } from "@beyonk/svelte-notifications";
+  
+  import { createUuid } from './utils/createUuid.js'
+  import time from './utils/time.js';
 
   let tasks = [];
   let task = "";
@@ -31,7 +33,8 @@
       tasks = tasks.concat({
         id: createUuid(),
         task,
-        complete: false
+        complete: false,
+        dataStart: time.createUnixStamp()
       });
 
       console.log(tasks)
