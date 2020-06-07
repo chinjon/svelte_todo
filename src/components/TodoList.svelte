@@ -36,13 +36,13 @@
           <input
             class="todo-input"
             type="checkbox"
-            id={`todo-${todo.id}`}
+            id={todo.id}
             value={todo.task}
             bind:checked={todo.complete}
             on:change={onChangeChecked} />
           <label
             class="todo-label {todo.complete ? 'todo-complete' : null}"
-            for={`todo-${todo.id}`}>
+            for={todo.id}>
             {todo.task}
           </label>
         </div>
