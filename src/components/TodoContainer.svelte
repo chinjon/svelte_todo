@@ -2,21 +2,16 @@
   import TodoList from "./TodoList.svelte";
   import { NotificationDisplay, notifier } from "@beyonk/svelte-notifications";
   
-  import { createUuid } from './utils/createUuid.js'
+  import todoData from './utils/todoData.js';
+  import { createUuid } from './utils/createUuid.js';
   import time from './utils/time.js';
 
   let tasks = [];
   let task = "";
   let hideComplete = false;
 
-  const getLocalStorage = () => {
-    if (typeof window !== "undefined") {
-      return JSON.parse(localStorage.getItem("todoListData"));
-    }
-  };
-
   try {
-    tasks = getLocalStorage() || [];
+    tasks = todoData.getLocalStorage('todoListData') || [];
   } catch (err) {
     tasks = [];
   }
@@ -24,7 +19,7 @@
   const clearLocalStorage = () => {
     if (typeof window !== "undefined") {
       localStorage.clear();
-      tasks = getLocalStorage() || [];
+      tasks = todoData.getLocalStorage('todoListData') || [];
     }
   };
 
@@ -38,12 +33,11 @@
         dataStart: time.createUnixStamp()
       });
 
-      console.log(tasks)
-
+      console.log('task added')
       task = "";
     } else {
-      console.log("Must not be empty");
-      notifier.warning("Must Not Be Empty!");
+      console.log("New task must not be empty");
+      notifier.warning("New task must Not Be Empty!");
     }
   };
 
@@ -58,12 +52,12 @@
 
 <div>
   <NotificationDisplay />
-  <button id="clear-todos" on:click={clearLocalStorage}>Clear Todos</button>
-  <button id="toggle-complete" on:click={() => {hideComplete = hideComplete ? false : true;}}>Toggle Complete</button>
+  <button id="clear-todos" on:click={clearLocalStorage} aria-label="delete all tasks in list">Clear Todos</button>
+  <button id="toggle-complete" on:click={() => {hideComplete = hideComplete ? false : true;}} aria-label="hide tasks marked as complete">Toggle Complete</button>
   <TodoList todos={tasks} hideComplete={hideComplete}/>
   <form on:submit|preventDefault={addTask}>
-    <label for="new-todo">Add a task item:</label>
-    <input type="text" id="new-todo" bind:value={task} />
-    <button type="submit">Add</button>
+    <label for="new-task">Add a task item:</label>
+    <input type="text" id="new-task" bind:value={task} />
+    <button type="submit" aria-label="add task to task list">Add</button>
   </form>
 </div>
