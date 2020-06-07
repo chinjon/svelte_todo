@@ -15,5 +15,6 @@
 		<li>Toggle show/hide completed</li>
 		<li>Export to JSON</li>
 		<li>Add charts - Frappe Charts</li>
+		<li>Add tests</li>
 	</ul>
 </div>
