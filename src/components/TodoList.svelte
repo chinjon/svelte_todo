@@ -20,13 +20,17 @@
     text-decoration: line-through;
     color: #808080;
   }
+
+  .hide-complete {
+    display: none;
+  }
 </style>
 
 <div>
   {#if todos !== undefined}
     {#if todos}
       {#each todos as todo, i}
-        <div class="todo-wrapper">
+        <div class="todo-wrapper {todo.complete ? 'hide-complete' : null}">
           <input
             class="todo-input"
             type="checkbox"
