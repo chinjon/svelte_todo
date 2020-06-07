@@ -1,5 +1,9 @@
 # Svelte Todos
 
+## Background
+
+Original intent of this repo was to explore and test out `svelte`, but now is more of an amibitous project to make a more feature-driven productivity thing.
+
 ## Links
 
 * [Live Demo - hosted on Netlify](lemonworld.netlify.app/)
