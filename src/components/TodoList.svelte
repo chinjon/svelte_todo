@@ -1,7 +1,9 @@
 <script>
   export let todos;
+  export let hideComplete;
 
   console.log(todos);
+  console.log(hideComplete)
   const onChangeChecked = () => {
     console.log("test on change");
     if (typeof window !== "undefined") {
@@ -30,7 +32,7 @@
   {#if todos !== undefined}
     {#if todos}
       {#each todos as todo, i}
-        <div class="todo-wrapper {todo.complete ? 'hide-complete' : null}">
+        <div class="todo-wrapper {todo.complete && hideComplete ? 'hide-complete' : null}">
           <input
             class="todo-input"
             type="checkbox"

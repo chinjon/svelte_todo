@@ -7,6 +7,7 @@
 
   let tasks = [];
   let task = "";
+  let hideComplete = true;
 
   const getLocalStorage = () => {
     if (typeof window !== "undefined") {
@@ -58,7 +59,8 @@
 <div>
   <NotificationDisplay />
   <button id="clear-todos" on:click={clearLocalStorage}>Clear Todos</button>
-  <TodoList todos={tasks} />
+  <button id="toggle-complete" on:click={() => {hideComplete = hideComplete ? false : true;}}>Toggle Complete</button>
+  <TodoList todos={tasks} hideComplete={hideComplete}/>
   <form on:submit|preventDefault={addTask}>
     <label for="new-todo">Add a task item:</label>
     <input type="text" id="new-todo" bind:value={task} />
