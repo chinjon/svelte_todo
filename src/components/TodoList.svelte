@@ -2,7 +2,7 @@
   export let todos;
 
   console.log(todos);
-  const testOnChange = () => {
+  const onChangeChecked = () => {
     console.log("test on change");
     if (typeof window !== "undefined") {
       localStorage.setItem("todoListData", JSON.stringify(todos));
@@ -37,7 +37,7 @@
             id={`todo-${todo.id}`}
             value={todo.task}
             bind:checked={todo.complete}
-            on:change={testOnChange} />
+            on:change={onChangeChecked} />
           <label
             class="todo-label {todo.complete ? 'todo-complete' : null}"
             for={`todo-${todo.id}`}>
