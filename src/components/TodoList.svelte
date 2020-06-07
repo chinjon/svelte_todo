@@ -1,9 +1,7 @@
 <script>
   export let todos;
   export let hideComplete;
-
-  console.log(todos);
-  console.log(hideComplete)
+  
   const onChangeChecked = () => {
     console.log("test on change");
     if (typeof window !== "undefined") {
