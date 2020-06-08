@@ -29,7 +29,7 @@
 <div>
   {#if todos !== undefined}
     {#if todos.length > 0}
-      {#each todos as todo, i}
+      {#each todos as todo}
         <div class="todo-wrapper {todo.complete && hideComplete ? 'hide-complete' : null}">
           <input
             class="todo-input"
