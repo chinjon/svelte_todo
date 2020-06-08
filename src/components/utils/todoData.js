@@ -2,12 +2,20 @@ const UNDEFINED = 'undefined';
 
 const getLocalStorage = (key) => {
   if (typeof window !== UNDEFINED) {
-    return JSON.parse(localStorage.getItem(key));
+    try {
+      return JSON.parse(localStorage.getItem(key));
+    } catch(e) {
+      console.log(e);
+    }
   }
 };
 
 const setLocalStorage = (key, data) => {
-  localStorage.setItem(key, JSON.stringify(data));
+  try {
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch(e) {
+    console.log(e);
+  }
 }
 
 export default {
