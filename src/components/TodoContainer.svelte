@@ -43,7 +43,8 @@
         id: createUuid(),
         task,
         complete: false,
-        dataStart: time.createUnixStamp(),
+        dateStart: time.createUnixStamp(),
+        dateEnd: ''
       });
 
       task = "";
