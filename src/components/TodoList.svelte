@@ -35,6 +35,10 @@
   .hide-complete {
     display: none;
   }
+
+  .delete-icon {
+    width: 12px;
+  }
 </style>
 
 <div>
@@ -55,6 +59,7 @@
             for={todo.id}>
             {todo.task}
           </label>
+          <img src="close-icon.svg" class="delete-icon" alt="delete task icon"/>
         </div>
       {/each}
     {:else}
