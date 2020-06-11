@@ -63,6 +63,9 @@
   }
 </script>
 
+<style>
+</style>
+
 <div>
   <NotificationDisplay />
   <button
@@ -81,9 +84,8 @@
     Toggle Complete
   </button>
   <TodoList todos={tasks} hideComplete={preferences.hideComplete} />
-  <form on:submit|preventDefault={addTask}>
-    <label for="new-task">Add a task item:</label>
-    <input type="text" id="new-task" bind:value={task} />
+  <form id="task-input" on:submit|preventDefault={addTask}>
+    <input placeholder="Input task" type="text" id="new-task" bind:value={task} />
     <button type="submit" aria-label="add task to task list">Add</button>
   </form>
 </div>
