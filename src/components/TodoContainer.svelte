@@ -64,6 +64,12 @@
 </script>
 
 <style>
+@media only screen and (max-device-width: 480px) {
+    #new-task,
+    #submit-task {
+      width: 100%;  
+    }
+}
 </style>
 
 <div>
@@ -86,6 +92,6 @@
   <TodoList todos={tasks} hideComplete={preferences.hideComplete} />
   <form id="task-input" on:submit|preventDefault={addTask}>
     <input placeholder="Input task" type="text" id="new-task" bind:value={task} />
-    <button type="submit" aria-label="add task to task list">Add</button>
+    <button type="submit" id="submit-task" aria-label="add task to task list">Add</button>
   </form>
 </div>
