@@ -27,6 +27,10 @@
     display: inline;
   }
 
+  .todo-input {
+    font-size: 16px;
+  }
+
   .todo-complete {
     text-decoration: line-through;
     color: #808080;
