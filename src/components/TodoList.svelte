@@ -5,8 +5,6 @@
   export let hideComplete;
   
   const onChangeChecked = (event) => {
-    console.log(event.target)
-    console.log(event.target.getAttribute("index"))
     const taskIndex = event.target.getAttribute("index");
 
     if (event.target.checked) {
@@ -19,12 +17,20 @@
       todoData.setLocalStorage("todoListData", todos);
     }
   };
+
+  const deleteTask = (event) => {
+    console.log('delete');
+  }
 </script>
 
 <style>
   .todo-input,
   .todo-label {
-    display: inline;
+    display: inline-block;
+  }
+
+  .todo-label {
+    width: 85%;
   }
 
   .todo-input {
@@ -63,7 +69,7 @@
             for={todo.id}>
             {todo.task}
           </label>
-          <img src="close-icon.svg" class="delete-icon" alt="delete task icon"/>
+          <img on:click={deleteTask} src="close-icon.svg" class="delete-icon" alt="delete task icon"/>
         </div>
       {/each}
     {:else}
