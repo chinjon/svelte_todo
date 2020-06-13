@@ -27,6 +27,10 @@
     display: inline;
   }
 
+  .todo-input {
+    font-size: 16px;
+  }
+
   .todo-complete {
     text-decoration: line-through;
     color: #808080;
@@ -34,6 +38,10 @@
 
   .hide-complete {
     display: none;
+  }
+
+  .delete-icon {
+    width: 12px;
   }
 </style>
 
@@ -55,6 +63,7 @@
             for={todo.id}>
             {todo.task}
           </label>
+          <img src="close-icon.svg" class="delete-icon" alt="delete task icon"/>
         </div>
       {/each}
     {:else}
