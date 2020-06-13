@@ -5,6 +5,7 @@
   import todoData from "./utils/todoData.js";
   import { createUuid } from "./utils/createUuid.js";
   import time from "./utils/time.js";
+  import downloadData from './utils/downloadData.js';
 
   const UNDEFINED = "undefined";
   const TODO_LIST_DATA = "todoListData";
@@ -28,6 +29,11 @@
   const setPreferences = () => {
     todoData.setLocalStorage(TODO_LIST_PREFERENCES, preferences);
   };
+
+  
+  const downloadJson = () => {
+    downloadData.buildJson(tasks)
+  }
 
   const clearLocalStorage = () => {
     if (typeof window !== UNDEFINED) {
@@ -65,7 +71,6 @@
 
 <style>
 @media only screen and (max-device-width: 480px) {
-    #new-task,
     #submit-task {
       width: 100%;  
     }
@@ -74,6 +79,9 @@
 
 <div>
   <NotificationDisplay />
+  <button on:click={downloadJson}>
+    <a id="download-tasks">Download Tasks</a>
+  </button>
   <button
     id="clear-todos"
     on:click={clearLocalStorage}
