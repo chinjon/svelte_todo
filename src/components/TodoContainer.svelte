@@ -74,6 +74,14 @@
     #submit-task {
       width: 100%;  
     }
+    
+    #new-task {
+      width: 98%;
+    }
+
+    #submit-task {
+      padding: 5px;
+    }
 }
 </style>
 
