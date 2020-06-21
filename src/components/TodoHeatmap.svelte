@@ -22,7 +22,7 @@ const data = {
 
   setTimeout(function() {
     try {
-    if (typeof window != 'undefined' && window.document) {
+    if (window.document) {
 console.log(data)
  let chart = new Chart("#heatmap", {
     type: 'heatmap',
