@@ -1,5 +1,4 @@
 <script>
-  import SvelteHeatmap from 'svelte-heatmap';
   import { Chart } from "frappe-charts"
   const createDateStampMap = () => {
 
