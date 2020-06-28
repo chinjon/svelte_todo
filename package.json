@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "traker",
+  "description": "a small productivity application",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
